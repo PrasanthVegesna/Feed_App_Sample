@@ -1,0 +1,74 @@
+{
+  "name": "inventory-management",
+  "version": "1.0.0", 
+  "description": "Complete Inventory Management System with GST",
+  "main": "public/electron.js",
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"npm run electron\" \"npm run react-dev\"",
+    "react-dev": "react-scripts start",
+    "electron": "wait-on http://localhost:3000 && electron .",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build-exe": "npm run build && npx electron-builder --win portable",
+    "start-fresh": "set RESET_DB=true && npm start",
+    "dev-fresh": "set RESET_DB=true && npm run start"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0", 
+    "react-scripts": "5.0.1",
+    "react-router-dom": "^6.28.0",
+    "sqlite3": "^5.1.7",
+    "mongodb": "^6.12.0",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.8.4",
+    "xlsx": "^0.18.5",
+    "chart.js": "^3.9.1",
+    "react-chartjs-2": "^4.3.1",
+    "date-fns": "^2.29.3",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "electron": "^37.2.0",
+    "electron-builder": "^26.0.12",
+    "electron-is-dev": "^2.0.0",
+    "concurrently": "^8.2.2",
+    "wait-on": "^8.0.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "build": {
+    "appId": "com.inventory.management",
+    "productName": "Inventory Management System",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "build/**/*",
+      "public/electron.js",
+      "public/preload.js",
+      "public/database.js", 
+      "public/mongodb.js"
+    ],
+    "win": {
+      "target": "portable",
+      "artifactName": "InventoryApp.exe"
+    },
+    "asar": false,
+    "compression": "normal"
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}
